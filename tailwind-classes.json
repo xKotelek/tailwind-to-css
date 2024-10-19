@@ -3,13 +3,19 @@
     "classes": [
         {
             "name": "relative",
-            "cateogry": "position",
+            "category": "position",
             "value": "position: relative;"
         },
         {
-            "name": "top-4",
+            "name": "top",
             "category": "position",
-            "value": "top: 1rem;"
+            "value": "top: {variant};",
+            "variants": {
+                "4": "1rem",
+                "8": "2rem",
+                "9": "3rem",
+                "10": "4rem"
+            }
         },
         {
             "name": "grid",
