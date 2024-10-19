@@ -1,0 +1,20 @@
+{
+    "checksum": "0.1.1+287kjhldfiouqwer6as9",
+    "classes": [
+        {
+            "name": "relative",
+            "cateogry": "position",
+            "value": "position: relative;"
+        },
+        {
+            "name": "top-4",
+            "category": "position",
+            "value": "top: 1rem;"
+        },
+        {
+            "name": "grid",
+            "category": "display",
+            "value": "display: grid;"
+        }
+    ]
+}
