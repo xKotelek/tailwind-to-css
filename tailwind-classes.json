@@ -7,6 +7,7 @@
         },
         "position-size": {
             "0": "0px",
+            "px": "1px",
             "0.5": "0.125rem",
             "1": "0.25rem",
             "1.5": "0.375rem",
@@ -91,6 +92,37 @@
             "name": "right",
             "category": "position",
             "value": "right: {variant};",
+            "variantType": "position-size"
+        },
+
+        {
+            "name": "inset",
+            "category": "position",
+            "value": "inset: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "inset-x",
+            "category": "position",
+            "value": "left: {variant}; right: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "inset-y",
+            "category": "position",
+            "value": "top: {variant}; bottom: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "start",
+            "category": "position",
+            "value": "inset-inline-start: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "end",
+            "category": "position",
+            "value": "inset-inline-end: {variant};",
             "variantType": "position-size"
         },
 
