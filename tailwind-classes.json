@@ -1,16 +1,424 @@
 {
     "checksum": "0.1.1+287kjhldfiouqwer6as9",
+    "variantTypes": {
+        "color": {
+           "white": "#ffffff",
+           "black": "#000000"
+        },
+        "position-size": {
+            "0": "0px",
+            "px": "1px",
+            "0.5": "0.125rem",
+            "1": "0.25rem",
+            "1.5": "0.375rem",
+            "2": "0.5rem",
+            "2.5": "0.625rem",
+            "3": "0.75rem",
+            "3.5": "0.875rem",
+            "4": "1rem",
+            "5": "1.25rem",
+            "6": "1.5rem",
+            "7": "1.75rem",
+            "8": "2rem",
+            "9": "2.25rem",
+            "10": "2.5rem",
+            "11": "2.75rem",
+            "12": "3rem",
+            "14": "3.5rem",
+            "16": "4rem",
+            "24": "6rem",
+            "28": "7rem",
+            "32": "8rem",
+            "36": "9rem",
+            "40": "10rem",
+            "44": "11rem",
+            "48": "12rem",
+            "52": "13rem",
+            "56": "14rem",
+            "60": "15rem",
+            "64": "16rem",
+            "72": "18rem",
+            "80": "20rem",
+            "96": "24rem",
+            "auto": "auto",
+            "1/2": "50%",
+            "1/3": "33.333333%;",
+            "2/3": "66.666667%;",
+            "1/4": "25%",
+            "2/4": "50%",
+            "3/4": "75%",
+            "full": "100%"
+        },
+        "element-size": {
+            "fit": "fit-content",
+            "max": "max-content",
+            "min": "min-content",
+            "full": "100%",
+            "0": "0px",
+            "px": "1px",
+            "0.5": "0.125rem",
+            "1": "0.25rem",
+            "1.5": "0.375rem",
+            "2": "0.5rem",
+            "2.5": "0.625rem",
+            "3": "0.75rem",
+            "3.5": "0.875rem",
+            "4": "1rem",
+            "5": "1.25rem",
+            "6": "1.5rem",
+            "7": "1.75rem",
+            "8": "2rem",
+            "9": "2.25rem",
+            "10": "2.5rem",
+            "11": "2.75rem",
+            "12": "3rem",
+            "14": "3.5rem",
+            "16": "4rem",
+            "24": "6rem",
+            "28": "7rem",
+            "32": "8rem",
+            "36": "9rem",
+            "40": "10rem",
+            "44": "11rem",
+            "48": "12rem",
+            "52": "13rem",
+            "56": "14rem",
+            "60": "15rem",
+            "64": "16rem",
+            "72": "18rem",
+            "80": "20rem",
+            "96": "24rem",
+            "auto": "auto",
+            "1/2": "50%",
+            "1/3": "33.333333%;",
+            "2/3": "66.666667%;",
+            "1/4": "25%",
+            "2/4": "50%",
+            "3/4": "75%",
+            "1/5": "20%",
+            "2/5": "40%",
+            "3/5": "60%",
+            "4/5": "80%",
+            "1/6": "16.666667%",
+            "2/6": "33.333333%",
+            "3/6": "50%",
+            "4/6": "66.666667%",
+            "5/6": "83.333333%",
+            "1/12": "8.333333%",
+            "2/12": "16.666667%",
+            "3/12": "25%",
+            "4/12": "33.333333%",
+            "5/12": "41.666667%",
+            "6/12": "50%",
+            "7/12": "58.333333%",
+            "8/12": "66.666667%",
+            "9/12": "75%",
+            "10/12": "83.333333%",
+            "11/12": "91.666667%"
+        },
+        "element-size-wh": {
+            "0": "0px",
+            "px": "1px",
+            "0.5": "0.125rem",
+            "1": "0.25rem",
+            "1.5": "0.375rem",
+            "2": "0.5rem",
+            "2.5": "0.625rem",
+            "3": "0.75rem",
+            "3.5": "0.875rem",
+            "4": "1rem",
+            "5": "1.25rem",
+            "6": "1.5rem",
+            "7": "1.75rem",
+            "8": "2rem",
+            "9": "2.25rem",
+            "10": "2.5rem",
+            "11": "2.75rem",
+            "12": "3rem",
+            "14": "3.5rem",
+            "16": "4rem",
+            "24": "6rem",
+            "28": "7rem",
+            "32": "8rem",
+            "36": "9rem",
+            "40": "10rem",
+            "44": "11rem",
+            "48": "12rem",
+            "52": "13rem",
+            "56": "14rem",
+            "60": "15rem",
+            "64": "16rem",
+            "72": "18rem",
+            "80": "20rem",
+            "96": "24rem",
+            "1/2": "50%",
+            "1/3": "33.333333%;",
+            "2/3": "66.666667%;",
+            "1/4": "25%",
+            "2/4": "50%",
+            "3/4": "75%",
+            "1/5": "20%",
+            "2/5": "40%",
+            "3/5": "60%",
+            "4/5": "80%",
+            "1/6": "16.666667%",
+            "2/6": "33.333333%",
+            "3/6": "50%",
+            "4/6": "66.666667%",
+            "5/6": "83.333333%",
+            "1/12": "8.333333%",
+            "2/12": "16.666667%",
+            "3/12": "25%",
+            "4/12": "33.333333%",
+            "5/12": "41.666667%",
+            "6/12": "50%",
+            "7/12": "58.333333%",
+            "8/12": "66.666667%",
+            "9/12": "75%",
+            "10/12": "83.333333%",
+            "11/12": "91.666667%",
+            "full": "100%",
+            "auto": "auto",
+            "none": "none",
+            "screen": "100vh",
+            "svh": "100svh",
+            "lvh": "100lvh",
+            "dvh": "100dvh",
+            "min": "min-content",
+            "max": "max-content",
+            "fit": "fit-content"
+        },
+        "text-size": {
+            
+        }
+    },
     "classes": [
         {
             "name": "relative",
-            "cateogry": "position",
+            "category": "position",
             "value": "position: relative;"
         },
         {
-            "name": "top-4",
+            "name": "static",
             "category": "position",
-            "value": "top: 1rem;"
+            "value": "position: static;"
         },
+        {
+            "name": "absolute",
+            "category": "position",
+            "value": "position: absolute;"
+        },
+
+        {
+            "name": "top",
+            "category": "position",
+            "value": "top: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "bottom",
+            "category": "position",
+            "value": "bottom: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "left",
+            "category": "position",
+            "value": "left: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "right",
+            "category": "position",
+            "value": "right: {variant};",
+            "variantType": "position-size"
+        },
+
+        {
+            "name": "inset",
+            "category": "position",
+            "value": "inset: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "inset-x",
+            "category": "position",
+            "value": "left: {variant}; right: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "inset-y",
+            "category": "position",
+            "value": "top: {variant}; bottom: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "start",
+            "category": "position",
+            "value": "inset-inline-start: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "end",
+            "category": "position",
+            "value": "inset-inline-end: {variant};",
+            "variantType": "position-size"
+        },
+
+        {"_": "Spacing"},
+        {
+            "name": "p",
+            "category": "spacing",
+            "value": "padding: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "px",
+            "category": "spacing",
+            "value": "padding-left: {variant}; padding-right: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "py",
+            "category": "spacing",
+            "value": "padding-top: {variant}; padding-bottom: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "ps",
+            "category": "spacing",
+            "value": "padding-inline-start: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "pe",
+            "category": "spacing",
+            "value": "padding-inline-end: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "pt",
+            "category": "spacing",
+            "value": "padding-top: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "pb",
+            "category": "spacing",
+            "value": "padding-bottom: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "pl",
+            "category": "spacing",
+            "value": "padding-left: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "pr",
+            "category": "spacing",
+            "value": "padding-right: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "m",
+            "category": "spacing",
+            "value": "margin: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "mx",
+            "category": "spacing",
+            "value": "margin-left: {variant}; margin-right: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "my",
+            "category": "spacing",
+            "value": "margin-top: {variant}; margin-bottom: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "ms",
+            "category": "spacing",
+            "value": "margin-inline-start: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "me",
+            "category": "spacing",
+            "value": "margin-inline-end: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "mt",
+            "category": "spacing",
+            "value": "margin-top: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "mb",
+            "category": "spacing",
+            "value": "margin-bottom: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "ml",
+            "category": "spacing",
+            "value": "margin-left: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "mr",
+            "category": "spacing",
+            "value": "margin-right: {variant};",
+            "variantType": "position-size"
+        },
+
+        {"_": "Sizing"},
+        {
+            "name": "size",
+            "category": "sizing",
+            "value": "width: {variant}; height: {variant};",
+            "variantType": "element-size"
+        },
+        {
+            "name": "max-h",
+            "category": "sizing",
+            "value": "max-height: {variant};",
+            "variantType": "element-size-wh"
+        },
+        {
+            "name": "min-h",
+            "category": "sizing",
+            "value": "min-height: {variant};",
+            "variantType": "element-size-wh"
+        },
+        {
+            "name": "h",
+            "category": "sizing",
+            "value": "height: {variant};",
+            "variantType": "element-size-wh"
+        },
+        {
+            "name": "max-w",
+            "category": "sizing",
+            "value": "max-width: {variant};",
+            "variantType": "element-size-wh"
+        },
+        {
+            "name": "min-w",
+            "category": "sizing",
+            "value": "min-width: {variant};",
+            "variantType": "element-size-wh"
+        },
+        {
+            "name": "w",
+            "category": "sizing",
+            "value": "width: {variant};",
+            "variantType": "element-size-wh"
+        },
+
         {
             "name": "grid",
             "category": "display",
