@@ -59,11 +59,41 @@
             "value": "position: relative;"
         },
         {
+            "name": "static",
+            "category": "position",
+            "value": "position: static;"
+        },
+        {
+            "name": "absolute",
+            "category": "position",
+            "value": "position: absolute;"
+        },
+
+        {
             "name": "top",
             "category": "position",
             "value": "top: {variant};",
             "variantType": "position-size"
         },
+        {
+            "name": "bottom",
+            "category": "position",
+            "value": "bottom: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "left",
+            "category": "position",
+            "value": "left: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "right",
+            "category": "position",
+            "value": "right: {variant};",
+            "variantType": "position-size"
+        },
+
         {
             "name": "grid",
             "category": "display",
