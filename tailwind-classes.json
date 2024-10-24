@@ -188,6 +188,17 @@
             "max": "max-content",
             "fit": "fit-content"
         },
+        "place": {
+            "auto": "auto",
+            "start": "start",
+            "end": "end",
+            "center": "center",
+            "baseline": "baseline",
+            "stretch": "stretch",
+            "space-between": "space-between",
+            "space-around": "space-around",
+            "space-evenly": "space-evenly"
+        },
         "text-size": {
             
         }
@@ -374,6 +385,18 @@
             "value": "margin-right: {variant};",
             "variantType": "position-size"
         },
+        {
+            "name": "space-x",
+            "category": "spacing",
+            "value": "margin-left: {variant};",
+            "variantType": "position-size"
+        },
+        {
+            "name": "space-y",
+            "category": "spacing",
+            "value": "margin-top: {variant};",
+            "variantType": "position-size"
+        },
 
         {"_": "Sizing"},
         {
@@ -419,9 +442,28 @@
             "variantType": "element-size-wh"
         },
 
+        {"_": "Flexbox & grid"},
+        {
+            "name": "place-self",
+            "category": "flexboxgrid",
+            "value": "place-self: {variant};",
+            "variantType": "place"
+        },
+        {
+            "name": "place-items",
+            "category": "flexboxgrid",
+            "value": "place-items: {variant};",
+            "variantType": "place"
+        },
+        {
+            "name": "place-content",
+            "category": "flexboxgrid",
+            "value": "place-content: {variant};",
+            "variantType": "place"
+        },
         {
             "name": "grid",
-            "category": "display",
+            "category": "flexboxgrid",
             "value": "display: grid;"
         }
     ]

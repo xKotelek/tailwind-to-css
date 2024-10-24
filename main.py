@@ -57,7 +57,12 @@ def convert(file):
             content = f.read()
 
         lines = content.split("\n")
+
         for line in lines:
+            # Usuwamy pustą klasę
+            line = line.replace('class=""', '')
+            line = line.replace('className=""', '')
+
             if 'class="' in line or 'className="' in line:
                 attr_type = 'class="' if 'class="' in line else 'className="'
                 class_attr_start = line.index(attr_type) + len(attr_type)
@@ -66,19 +71,25 @@ def convert(file):
 
                 matched_styles = []
                 remaining_classes = []
-                special_rules = {"hover": [], "active": [], "before": [], "after": []}
+                special_rules = {"hover": [], "before": [], "after": []}
 
                 for class_name in classes_in_line:
                     found_match = False
-                    negative = False  # Flaga dla klas z minusem
+                    negative = class_name.startswith("-")
+                    class_name = class_name[1:] if negative else class_name
 
-                    # Sprawdzanie, czy klasa ma przedrostek "-".
-                    if class_name.startswith("-"):
-                        negative = True
-                        class_name = class_name[1:]  # Usuwanie minusa
+                    # Obsługa hover, before, after
+                    if class_name.startswith("hover:"):
+                        special_rules["hover"].append(class_name[6:])
+                        continue
+                    elif class_name.startswith("before:"):
+                        special_rules["before"].append(class_name[7:])
+                        continue
+                    elif class_name.startswith("after:"):
+                        special_rules["after"].append(class_name[6:])
+                        continue
 
                     for json_class_name, json_class_data in tailwind_classes.items():
-                        # Dopasowanie klasy bez wariantu
                         if class_name == json_class_name:
                             value = json_class_data["value"]
                             if negative:
@@ -87,7 +98,6 @@ def convert(file):
                             found_match = True
                             break
 
-                        # Dopasowanie klasy z wariantem
                         elif class_name.startswith(json_class_name + "-"):
                             variant_key = class_name[len(json_class_name) + 1:]
                             if "[" in variant_key and "]" in variant_key:
@@ -108,54 +118,48 @@ def convert(file):
                                 break
 
                     if not found_match:
-                        # Obsługa prefiksów hover:, active:, before:, after:
-                        if class_name.startswith("hover:"):
-                            special_rules["hover"].append(class_name[6:])
-                        elif class_name.startswith("active:"):
-                            special_rules["active"].append(class_name[7:])
-                        elif class_name.startswith("before:"):
-                            special_rules["before"].append(class_name[7:])
-                        elif class_name.startswith("after:"):
-                            special_rules["after"].append(class_name[6:])
-                        else:
-                            remaining_classes.append(class_name)
+                        remaining_classes.append(class_name)
 
-                if matched_styles:
+                # Generowanie klasy
+                if matched_styles or remaining_classes:
                     random_classname = generate_random_classname(new_css_rules.keys())
-                    remaining_classes.append(random_classname)
-                    new_css_rules[random_classname] = "\n".join(f"\t{style};" for style in matched_styles)
+                    new_classes_str = " ".join(remaining_classes).strip()  # Usuwamy zbędne spacje
 
-                # Dodawanie specjalnych reguł dla hover, active, before, after
+                    # Dodajemy wygenerowaną klasę
+                    line = line[:class_attr_start] + random_classname + (" " + new_classes_str if new_classes_str else "") + line[class_attr_end:]
+
+                    if matched_styles:
+                        new_css_rules[random_classname] = "\n".join(f"\t{style}" for style in matched_styles)
+
+                # Dodawanie klas dla hover
                 if special_rules["hover"]:
-                    random_classname = generate_random_classname(new_css_rules.keys())
-                    remaining_classes.append(random_classname)
-                    hover_styles = [f"\t{tailwind_classes[cls]['value']};" for cls in special_rules["hover"] if cls in tailwind_classes]
-                    new_css_rules[random_classname + ":hover"] = "\n".join(hover_styles)
+                    hover_styles = [tailwind_classes[cls]["value"] for cls in special_rules["hover"] if cls in tailwind_classes]
+                    if hover_styles:
+                        hover_classname = generate_random_classname(new_css_rules.keys())
+                        new_css_rules[hover_classname + ":hover"] = "\n".join(f"\t{style}" for style in hover_styles)
+                        line = line[:class_attr_end] + f' {hover_classname}' + line[class_attr_end:]  # Dodajemy hover class
 
-                if special_rules["active"]:
-                    random_classname = generate_random_classname(new_css_rules.keys())
-                    remaining_classes.append(random_classname)
-                    active_styles = [f"\t{tailwind_classes[cls]['value']};" for cls in special_rules["active"] if cls in tailwind_classes]
-                    new_css_rules[random_classname + ":active"] = "\n".join(active_styles)
-
-                # Dodawanie once `content: '';` dla before i after
+                # Dodawanie klas dla before
                 if special_rules["before"]:
-                    random_classname = generate_random_classname(new_css_rules.keys())
-                    remaining_classes.append(random_classname)
-                    before_styles = ["\tcontent: '';\n"] + [f"\t{tailwind_classes[cls]['value']};" for cls in special_rules["before"] if cls in tailwind_classes]
-                    new_css_rules[random_classname + "::before"] = "\n".join(before_styles)
+                    before_styles = ["content: '';"]  # Zawsze dodajemy content: ''
+                    before_styles += [tailwind_classes[cls]["value"] for cls in special_rules["before"] if cls in tailwind_classes]
+                    if before_styles:
+                        before_classname = generate_random_classname(new_css_rules.keys())
+                        new_css_rules[before_classname + "::before"] = "\n".join(f"\t{style}" for style in before_styles)
+                        line = line[:class_attr_end] + f' {before_classname}' + line[class_attr_end:]  # Dodajemy before class
 
+                # Dodawanie klas dla after
                 if special_rules["after"]:
-                    random_classname = generate_random_classname(new_css_rules.keys())
-                    remaining_classes.append(random_classname)
-                    after_styles = ["\tcontent: '';\n"] + [f"\t{tailwind_classes[cls]['value']};" for cls in special_rules["after"] if cls in tailwind_classes]
-                    new_css_rules[random_classname + "::after"] = "\n".join(after_styles)
+                    after_styles = ["content: '';"]  # Zawsze dodajemy content: ''
+                    after_styles += [tailwind_classes[cls]["value"] for cls in special_rules["after"] if cls in tailwind_classes]
+                    if after_styles:
+                        after_classname = generate_random_classname(new_css_rules.keys())
+                        new_css_rules[after_classname + "::after"] = "\n".join(f"\t{style}" for style in after_styles)
+                        line = line[:class_attr_end] + f' {after_classname}' + line[class_attr_end:]  # Dodajemy after class
 
-                new_classes_str = " ".join(remaining_classes)
-                line = line[:class_attr_start] + new_classes_str + line[class_attr_end:]
+            converted_content += line + "\n"  # Dodajemy linię
 
-            converted_content += line + "\n"
-
+        # Pisanie do pliku HTML
         with open(file, "w") as f:
             f.write(converted_content)
 
